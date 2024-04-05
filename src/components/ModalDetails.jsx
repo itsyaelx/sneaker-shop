@@ -49,7 +49,7 @@ function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setC
             <div className="modal-details container">
                 <div className="sneaker-details">
                     <div className="item-pic">
-                        <img src={`src/assets/${selectedModel.image}.jpg`} alt="sneaker pic" />
+                        <img src={`./assets/${selectedModel.image}.jpg`} alt="sneaker pic" />
                     </div>
                     <div className="sneaker-info">
                         <h2>{selectedModel.name}</h2>
