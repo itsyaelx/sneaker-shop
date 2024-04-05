@@ -51,6 +51,10 @@ function Header ({ cart, setCart }) {
 
     const clearCart = () => setCart({})
 
+    function getImageUrl( image ) {
+        return new URL(`/src/assets/${image}.jpg`, import.meta.url).href
+    }
+
     useEffect(() => {
         if (openCart === true) {
             document.body.style.overflow = "hidden";
@@ -103,7 +107,7 @@ function Header ({ cart, setCart }) {
                                 { Object.keys(cart).map( (key, index) => (
                                     <div className='cart-item' key={index}>
                                         <div className='cart-item-image-container'>
-                                            <img src={`./assets/${cart[key].image}.jpg`} alt="sneak pic" className="cart-pic" />
+                                            <img src={getImageUrl( cart[key].image )} alt="sneak pic" className="cart-pic" />
                                         </div>
                                         <div className='cart-item-details'> 
                                             <h5>{cart[key].name}</h5>
