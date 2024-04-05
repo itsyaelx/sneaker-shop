@@ -103,7 +103,7 @@ function Header ({ cart, setCart }) {
                                 { Object.keys(cart).map( (key, index) => (
                                     <div className='cart-item' key={index}>
                                         <div className='cart-item-image-container'>
-                                            <img src={`src/assets/images/${cart[key].image}.jpg`} alt="sneak pic" className="cart-pic" />
+                                            <img src={`src/assets/${cart[key].image}.jpg`} alt="sneak pic" className="cart-pic" />
                                         </div>
                                         <div className='cart-item-details'> 
                                             <h5>{cart[key].name}</h5>
