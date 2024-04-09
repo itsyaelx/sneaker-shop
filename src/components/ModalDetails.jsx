@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import Sneaker from "./Sneaker"
+import getImageUrl from "../utilities/getImageUrl"
 
 function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setCart, cart }) {
     const [selectedSize, setSelectedSize] = useState(null)
@@ -37,10 +38,6 @@ function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setC
         setSelectedSize(null)
     }
 
-    function getImageUrl( image ) {
-        return new URL(`/src/assets/${image}.jpg`, import.meta.url).href
-    }
-
     useEffect(() => {
         setSelectedSize(null)
     }, [selectedModel])
@@ -52,9 +49,10 @@ function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setC
             </div>
             <div className="modal-details container">
                 <div className="sneaker-details">
-                    <div className="item-pic">
-                        <img src={ getImageUrl( selectedModel.image) } alt="sneaker pic" />
-                    </div>
+                    <picture className="item-pic">
+                        <source srcSet={ getImageUrl( selectedModel.image, "webp" ) }/>
+                        <img src={ getImageUrl( selectedModel.image, "jpg" ) } alt="sneaker pic" />
+                    </picture>
                     <div className="sneaker-info">
                         <h2>{selectedModel.name}</h2>
                         <h3>$ {selectedModel.price}</h3>

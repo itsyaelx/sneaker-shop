@@ -1,6 +1,7 @@
 import logo from '/logo.svg'
 import cartIcon from '/cartIcon.svg'
 import { useEffect, useRef, useState } from 'react'
+import getImageUrl from '../utilities/getImageUrl'
 
 function Header ({ cart, setCart }) {
     const [openCart, setOpenCart] = useState(null)
@@ -50,10 +51,6 @@ function Header ({ cart, setCart }) {
     }
 
     const clearCart = () => setCart({})
-
-    function getImageUrl( image ) {
-        return new URL(`/src/assets/${image}.jpg`, import.meta.url).href
-    }
 
     useEffect(() => {
         if (openCart === true) {
@@ -106,9 +103,10 @@ function Header ({ cart, setCart }) {
                             <div className="cart-table">
                                 { Object.keys(cart).map( (key, index) => (
                                     <div className='cart-item' key={index}>
-                                        <div className='cart-item-image-container'>
-                                            <img src={getImageUrl( cart[key].image )} alt="sneak pic" className="cart-pic" />
-                                        </div>
+                                        <picture className='cart-item-image-container'>
+                                            <source srcSet={ getImageUrl( cart[key].image, "webp" ) }/>
+                                            <img src={ getImageUrl( cart[key].image, "jpg" ) } alt="sneak pic" className="cart-pic" />
+                                        </picture>
                                         <div className='cart-item-details'> 
                                             <h5>{cart[key].name}</h5>
                                             <p className='cart-item-price'>Price: $ {cart[key].price}</p>

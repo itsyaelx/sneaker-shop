@@ -1,3 +1,5 @@
+import getImageUrl from "../utilities/getImageUrl";
+
 function Sneaker ({ sneaker, setSelectedModel }) {
     const handleHoverSneaker = (e) => {
         if (e.target.classList[0] === "sneaker") {
@@ -17,10 +19,6 @@ function Sneaker ({ sneaker, setSelectedModel }) {
         }
     }
 
-    function getImageUrl( image ) {
-        return new URL(`/src/assets/${image}.jpg`, import.meta.url).href
-    }
-
     return (
         <div 
             className="sneaker" 
@@ -28,9 +26,10 @@ function Sneaker ({ sneaker, setSelectedModel }) {
             onMouseEnter={handleHoverSneaker} 
             onMouseLeave={handleSneakerMouseLeave}
         >
-            <div className="sneaker-pic-container">
-                <img src={ getImageUrl( sneaker.image ) } alt="sneaker photo" className='sneaker-pic'/>
-            </div>
+            <picture className="sneaker-pic-container">
+                <source srcSet={ getImageUrl( sneaker.image, "webp")} />
+                <img src={ getImageUrl( sneaker.image, "jpg" ) } alt="sneaker photo" className='sneaker-pic'/>
+            </picture>
             <h3>{sneaker.name}</h3>
             <h4>${sneaker.price}</h4>
         </div>

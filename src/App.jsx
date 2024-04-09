@@ -29,10 +29,6 @@ function App() {
       }
   }, [selectedModel])
 
-  useEffect(() => {
-    console.log(cart)
-  }, [cart])
-
   return (
     <>
     <ModalDetails 
