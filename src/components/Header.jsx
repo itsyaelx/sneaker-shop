@@ -105,7 +105,11 @@ function Header ({ cart, setCart }) {
                                     <div className='cart-item' key={index}>
                                         <picture className='cart-item-image-container'>
                                             <source srcSet={ getImageUrl( cart[key].image, "webp" ) }/>
-                                            <img src={ getImageUrl( cart[key].image, "jpg" ) } alt="sneak pic" className="cart-pic" />
+                                            <img 
+                                            src={ getImageUrl( cart[key].image, "jpg" ) } 
+                                            loading="lazy"
+                                            alt="sneak pic" className="cart-pic" 
+                                            />
                                         </picture>
                                         <div className='cart-item-details'> 
                                             <h5>{cart[key].name}</h5>

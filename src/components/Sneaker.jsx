@@ -28,7 +28,11 @@ function Sneaker ({ sneaker, setSelectedModel }) {
         >
             <picture className="sneaker-pic-container">
                 <source srcSet={ getImageUrl( sneaker.image, "webp")} />
-                <img src={ getImageUrl( sneaker.image, "jpg" ) } alt="sneaker photo" className='sneaker-pic'/>
+                <img 
+                src={ getImageUrl( sneaker.image, "jpg" ) } 
+                alt="sneaker photo" className='sneaker-pic'
+                loading="lazy"
+                />
             </picture>
             <h3>{sneaker.name}</h3>
             <h4>${sneaker.price}</h4>

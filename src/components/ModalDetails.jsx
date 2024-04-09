@@ -51,7 +51,11 @@ function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setC
                 <div className="sneaker-details">
                     <picture className="item-pic">
                         <source srcSet={ getImageUrl( selectedModel.image, "webp" ) }/>
-                        <img src={ getImageUrl( selectedModel.image, "jpg" ) } alt="sneaker pic" />
+                        <img 
+                        src={ getImageUrl( selectedModel.image, "jpg" ) } 
+                        loading="lazy"
+                        alt="sneaker pic" 
+                        />
                     </picture>
                     <div className="sneaker-info">
                         <h2>{selectedModel.name}</h2>
