@@ -15,6 +15,13 @@ function Header ({ cart, setCart }) {
             return total
         }, 0
     )
+    const itemCount = isEmpty ? 0 : Object.keys(cart).reduce
+    (
+        (total, key) => {
+            total += cart[key].quantity
+            return total
+        }, 0
+    )
 
     const bgCartRef = useRef(null)
     const panelCartRef = useRef(null)
@@ -81,6 +88,11 @@ function Header ({ cart, setCart }) {
                 </div>
                 <nav>
                 <div className="cart-container" onClick={() => {setOpenCart(true)}}>
+                    {
+                    itemCount === 0 
+                    ? "" 
+                    : <div className="cart-item-counter">{itemCount}</div>
+                    }
                     <img src={cartIcon} alt="cartButton" />
                 </div>
                 </nav>
