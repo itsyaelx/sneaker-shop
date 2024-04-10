@@ -1,21 +1,28 @@
 import githubIcon from '/github.svg'
 import linkedInIcon from '/linkedin.svg'
-import { useEffect, useRef, useState } from 'react'
+import { 
+  useEffect, 
+  useRef, 
+  useState,
+  useImperativeHandle } from 'react'
 import Header from './components/Header'
 import ModalDetails from './components/ModalDetails'
 import { db } from './data/data'
 import Sneaker from './components/Sneaker'
+
 function App() {
   const [selectedModel, setSelectedModel] = useState({})
   const [data, setData] = useState(db)
   const [cart, setCart] = useState({})
 
   const bgModalRef = useRef(null)
+  
 
   useEffect(() => {
       if (Object.keys(selectedModel).length > 0) {
           document.body.style.overflow = "hidden"
           bgModalRef.current.style.display = "unset"
+          bgModalRef.current.scrollTo(  { behavior: 'smooth', top: 0 } )
           setTimeout(() => {
             bgModalRef.current.classList.add("visible")
           }, 1);

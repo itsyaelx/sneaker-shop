@@ -310,12 +310,17 @@ nav {
   cursor: pointer;
   border: solid 1px white;
   margin-bottom: 1rem;
-  transition: border-color ease 300ms;
+  transition: ease 300ms;
 }
 
 .selected,
 .size-option:hover {
   border-color: black;
+}
+
+.selected {
+  background-color: black;
+  color: white;
 }
 
 .size-selector {
