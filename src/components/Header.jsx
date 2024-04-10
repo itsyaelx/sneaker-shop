@@ -139,7 +139,7 @@ function Header ({ cart, setCart }) {
                                                 > + </button>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className='remove-item-btn-container'>
                                             <button 
                                             className='item-btn remove-item-btn'
                                             onClick={() => removeFromCart(key)}> x </button>

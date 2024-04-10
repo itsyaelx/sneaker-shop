@@ -510,7 +510,7 @@ nav {
 }
 
 .item-btn {
-  border-radius: 100%;
+  border-radius: 0.3rem;
   padding: 0 0.4rem;
   height: fit-content;
   border: none;
@@ -524,8 +524,15 @@ nav {
   background-color: black;
 }
 
+.remove-item-btn-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .remove-item-btn {
   padding: 0 0.6rem 0.2rem 0.6rem;
+  flex: 0.5;
 }
 
 .quantity-indicator {
