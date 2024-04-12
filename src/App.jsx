@@ -3,8 +3,7 @@ import linkedInIcon from '/linkedin.svg'
 import { 
   useEffect, 
   useRef, 
-  useState,
-  useImperativeHandle } from 'react'
+  useState} from 'react'
 import Header from './components/Header'
 import ModalDetails from './components/ModalDetails'
 import { db } from './data/data'
@@ -12,9 +11,14 @@ import Sneaker from './components/Sneaker'
 import Notification from './components/Notification'
 
 function App() {
+  const initializeCart = () => {
+    const initialCart = localStorage.getItem('cart')
+    return initialCart ? JSON.parse(initialCart) : {}
+  }
+  
   const [selectedModel, setSelectedModel] = useState({})
   const [data, setData] = useState(db)
-  const [cart, setCart] = useState({})
+  const [cart, setCart] = useState(initializeCart)
   const [notifications, setNotifications] = useState([])
   const [openCart, setOpenCart] = useState(null)
 
@@ -45,6 +49,10 @@ function App() {
           }, 400);
       }
   }, [selectedModel])
+
+  useEffect(()=>{
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   return (
     <>
