@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import Sneaker from "./Sneaker"
 import getImageUrl from "../utilities/getImageUrl"
 
-function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setCart, cart }) {
+function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setCart, cart, addNotification }) {
     const [selectedSize, setSelectedSize] = useState(null)
     const sneakerKeys = Object.keys(data)
     const maxId = sneakerKeys[sneakerKeys.length - 1]
@@ -11,6 +11,7 @@ function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setC
 
     function handleAddToCart(id) {
         if (selectedSize === null) {
+            addNotification("Select Size")
             return
         }
         setCart((prevCart) => {
@@ -23,15 +24,18 @@ function ModalDetails ({ bgModalRef, setSelectedModel, selectedModel, data, setC
                     },
                     ...prevCart,
                 }
+                addNotification("Item Added")
                 return newCart
             }
 
             if(prevCart[`@${id + selectedSize}`].quantity === 5){
+                addNotification("Max Quantity")
                 return prevCart
             }
 
             const newCart = { ...cart }
             newCart[`@${id + selectedSize}`].quantity += 1
+            addNotification("Item Added")
             return newCart
         })
 

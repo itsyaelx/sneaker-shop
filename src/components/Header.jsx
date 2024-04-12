@@ -3,9 +3,7 @@ import cartIcon from '/cartIcon.svg'
 import { useEffect, useRef, useState } from 'react'
 import getImageUrl from '../utilities/getImageUrl'
 
-function Header ({ cart, setCart }) {
-    const [openCart, setOpenCart] = useState(null)
-
+function Header ({ openCart, setOpenCart, cart, setCart, addNotification }) {
     //State derivado
     const isEmpty = Object.keys(cart).length === 0
     const total = isEmpty ? 0 : Object.keys(cart).reduce
@@ -55,6 +53,7 @@ function Header ({ cart, setCart }) {
         const newCart = { ...cart }
         delete(newCart[key])
         setCart(newCart)
+        addNotification("Item Removed")
     }
 
     const clearCart = () => setCart({})

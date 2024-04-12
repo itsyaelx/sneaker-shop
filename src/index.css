@@ -554,6 +554,105 @@ nav {
   text-align: right;
 }
 
+/*Notification system*/
+.notifications-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 1rem;
+  padding: 1rem;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  max-width: 35rem;
+  width: 100%;
+}
+
+.notification {
+  display: flex;
+  width: 100%;
+  background-color: black;
+  border-radius: 2rem;
+  padding: 0.1rem 1.5rem;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  transition: all linear 300ms;
+}
+
+.--notification-visible {
+  opacity: 1;
+}
+
+.--notification-remove {
+  opacity: 0;
+}
+
+.--notification-gone {
+  transform: translateX(100%);
+}
+
+.--notification-minimized {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  display: none;
+}
+
+.notification-text-section {
+  flex: 1;
+}
+
+.notification-text-section h5 {
+  color: white;
+  text-align: center;
+}
+
+.notification-text-section a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.notification-btn-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.notification-remove-btn {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.notification-remove-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar {
+  height: 0.3rem;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: transform linear 5s;
+}
+
+.--progressing {
+  transform: translateX(-100%);
+}
+
+.--removed {
+  opacity: 0;
+}
+
+
 /*Animations*/
 
 @keyframes showingBg {
